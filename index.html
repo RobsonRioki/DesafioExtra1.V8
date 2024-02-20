@@ -9,40 +9,32 @@
 </head>
 <body>
     <header>
-        <header>
             <div class="tituloHeader">
             <img class="iconeHeader"  src="assets/atividades.png" alt="imagem de logo de atividades">
             <h1>Registrador de atividades</h1>
             </div>
-        </header>
+            <nav class="navbar">
+                <ul class="ulHeader">
+                    <li class="liHeader"><a href="#sessaoMural" class="aHeader">Atividades</a></li>
+                    <li class="liHeader"><a href="#sessaoInserirAtividade" class="aHeader">Cadastrar atividades</a></li>
+                </ul>
+            </nav>
     </header>
     <main>
+        <section class="sessaoMural">
+
+        </section>
         <section class="sessaoInserirAtividade">
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
             <form action="." class=>
                 <div class="containerInserir">
                     <h1 class="tituloFormulario">Insira suas atividades!</h1>
-                    <label class="labelFormulario" for="atividade">Nome da Atividade</label>
-                    <input id="atividade" class="inputFormulario" type="text" placeholder="Digite o nome da atividade" required>
-                    <label class="labelFormulario" for="prazo">Prazo da atividade</label>
-                    <input id="prazo" class="inputFormulario" type="date" required>
-                    <label class="labelFormulario" for="descricao">Descrição</label>
-                    <textarea id="descricao" name="descricao" class="inputFormularioDesc" type="text" placeholder="Descreva sua atividade" maxlength="500" required></textarea>
-                    <button class="botaoEnviar">Registrar</button>
+                    <h2 class="h2Formulario" for="atividade">Nome da Atividade</h2>
+                    <input id="inputAtividade" class="inputFormulario" type="text" placeholder="Digite o nome da atividade" required>
+                    <h2 class="h2Formulario" for="prazo">Prazo da atividade</h2>
+                    <input id="inputPrazo" class="inputFormulario" type="date" required>
+                    <h2 class="h2Formulario" for="descricao">Descrição</h2>
+                    <textarea id="inputDescricao" name="descricao" class="inputFormularioDesc" type="text" placeholder="Descreva sua atividade" maxlength="500" required></textarea>
+                    <button class="botaoEnviar" onclick="registrar()">Registrar</button>
                 </div>
             </form>
         </section>
@@ -50,7 +42,7 @@
     </main>
     <footer class="rodape" id="footer">
             <small class="footerTexto">
-                Copyright ©2024 All rights reserved
+                Copyright &copy;2024 All rights reserved
             </small>
     </footer>
     

@@ -3,16 +3,45 @@
     padding: 0;
 }
 
-header{
+header {
     margin: 10px;
+    padding: auto;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    height: auto;
+    justify-content: space-between;
 }
 
-.tituloHeader{
+.ulHeader {
+    display: flex;
+    width: auto;
+    justify-content: end;
+    list-style: none;
+}
+
+.liHeader {
+    margin-left: 30px;
+}
+
+.aHeader {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.aHeader:hover {
+    transition: 0.2s;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.tituloHeader {
     display: flex;
     flex-direction: row;
 }
 
-.iconeHeader{
+.iconeHeader {
     width: 35px;
     height: 35px;
     margin-right: 30px;
@@ -33,18 +62,18 @@ header{
     height: auto;
 }
 
-.tituloFormulario{
+.tituloFormulario {
     display: flex;
     justify-content: center;
     margin-bottom: 5%;
 }
 
-.labelFormulario{
+.labelFormulario {
     margin: 1%;
     font: 20px;
 }
 
-.inputFormulario{
+.inputFormulario {
     margin-bottom: 10%;
     width: 500px;
     height: 50px;
@@ -54,7 +83,7 @@ header{
     border: 1px solid gray;
 }
 
-.inputFormularioDesc{
+.inputFormularioDesc {
     margin-bottom: 10%;
     width: 500px;
     height: 100px;
@@ -65,7 +94,7 @@ header{
     resize: none;
 }
 
-.botaoEnviar{
+.botaoEnviar {
     display: flex;
     justify-content: center;
     text-align: center;
