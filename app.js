@@ -23,7 +23,6 @@ function carregarMural(){
         console.log('nada adicionado');
     }else{
     // alert('mural carregado');
-
     muralAtividades.innerHTML = JSON.stringify(localStorage.getItem('atividades'));
     console.log(JSON.stringify(localStorage.getItem('atividades')));
     }
