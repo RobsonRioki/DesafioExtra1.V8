@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="assets/atividades.png" type="image">
 </head>
-<body>
+<body onload="carregarMural()">
     <header>
             <div class="tituloHeader">
             <img class="iconeHeader"  src="assets/atividades.png" alt="imagem de logo de atividades">
@@ -21,10 +21,10 @@
             </nav>
     </header>
     <main>
-        <section class="sessaoMural">
-
+        <section class="sessaoMural" id="sessaoMural">
+            <div id="muralAtividades" class="muralAtividades"></div>
         </section>
-        <section class="sessaoInserirAtividade">
+        <section class="sessaoInserirAtividade" id="sessaoInserirAtividade">
             <form action="." class=>
                 <div class="containerInserir">
                     <h1 class="tituloFormulario">Insira suas atividades!</h1>
@@ -34,7 +34,7 @@
                     <input id="inputPrazo" class="inputFormulario" type="date" required>
                     <h2 class="h2Formulario" for="descricao">Descrição</h2>
                     <textarea id="inputDescricao" name="descricao" class="inputFormularioDesc" type="text" placeholder="Descreva sua atividade" maxlength="500" required></textarea>
-                    <button class="botaoEnviar" onclick="registrar()">Registrar</button>
+                    <button class="botaoEnviar" onclick="registrar()" type="button">Registrar</button>
                 </div>
             </form>
         </section>

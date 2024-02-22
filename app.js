@@ -1,30 +1,49 @@
-var nome = [];
-var prazo = [];
-var descricao = [];
+function verificar (){
 
-var contador = 0;
+}
+
+let atividadesNew = JSON.parse(localStorage.getItem('atividades'));
+if (!atividadesNew){
+    atividadesNew =[{}];
+}   
 
 function registrar(){
     var nomeAtividade = inputAtividade.value.trim();
     var prazoAtividade = inputPrazo.value;
     var descricaoAtividade = inputDescricao.value.trim();
 
+    
+    if (nomeAtividade != "" && prazoAtividade != "" && descricaoAtividade != ""){
+        const novaAtividade = {nome: nomeAtividade.toString(), prazo: prazoAtividade.toString(), descricao: descricaoAtividade.toString()};
 
-    if (inputAtividade.value != "" && prazoAtividade.value != null && inputDescricao.value != ""){
-        contador++
-        nome.push(nomeAtividade);
-        prazo.push(prazoAtividade);
-        descricao.push(descricaoAtividade);
-        
-        localStorage.setItem(nome, `Item ${contador}`);
-        localStorage.setItem(prazo, `Item ${contador}`);
-        localStorage.setItem(descricao, `Item ${contador}`);
-        
+        atividadesNew.push(novaAtividade);
+        localStorage.setItem('atividades' , JSON.stringify(atividadesNew));
+
+        console.log(novaAtividade);
+
+        // atividadesNew 
+        //adicionar as novas atividades aqui neste objeto
+        console.log(atividadesNew);
+    
+
+        // localStorage.setItem('atividades', JSON.stringify(atividadesNew));
+
+
+        // location.reload() 
+        // alert("Atividade registrada!");
     }else{
         alert("Preencha todos os campos!")
     }
 
-console.log(nome);
-console.log(prazo);
-console.log(descricao);
+}
+
+
+function carregarMural(){
+    if (JSON.parse(localStorage.getItem('atividades')) == 'null'){
+        console.log('nada adicionado');
+    }else{
+// alert('mural carregado');
+muralAtividades.innerHTML = JSON.stringify(localStorage.getItem('atividades'));;
+console.log(JSON.stringify(localStorage.getItem('atividades')));
+    }
 }
