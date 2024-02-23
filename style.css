@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-size: 20px;
 }
 
 header {
@@ -51,6 +52,7 @@ header {
     margin-top: 50px;
     display: flex;
     justify-content: center;
+    margin-bottom: 300px;
 }
 
 .containerInserir {
@@ -105,6 +107,7 @@ header {
     border-radius: 20px;
     background-color: azure;
     border: 1px solid gray;
+    cursor: pointer;
 }
 
 
@@ -118,4 +121,56 @@ footer {
     color: #21243D;
     font-size: 14px;
     margin-top: 10px;
+}
+
+.sessaoMural {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.tituloMural {
+    display: flex;
+    justify-content: center;
+}
+
+.muralAtividades {
+    margin-top: 10px;
+    padding: auto;
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.botaoAlterar,
+.botaoRemover {
+    width: 130px;
+    height: 30px;
+    margin-left: 20px;
+    border-radius: 20px;
+    background-color: azure;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.botaoRemover:hover {
+    background-color: red;
+}
+
+.botaoAlterar:hover {
+    background-color: green;
+}
+
+.atividadeNoMural {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.atividadeNoMural.concluida {
+    color: green;
 }
