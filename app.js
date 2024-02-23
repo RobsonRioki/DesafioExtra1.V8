@@ -1,20 +1,26 @@
 function registrar(){
     var nomeAtividade = inputAtividade.value.trim();
     var prazoAtividade = inputPrazo.value;
+    var data = new Date(prazoAtividade + "T00:00:00");
+    var prazoFormatado = data.toLocaleDateString('pt-BR');
+
+    var dataAtual = new Date();
+    const dataAtualFormatada = dataAtual.toLocaleDateString('pt-BR');
+
     let atividadesNew = JSON.parse(localStorage.getItem('atividades'));
     if (!atividadesNew){
     atividadesNew =[];
     } 
 
-    if (nomeAtividade != "" && prazoAtividade != ""){
-        const novaAtividade = {nome: nomeAtividade.toString(), prazo: prazoAtividade.toString(), concluida: false};
+    if (nomeAtividade != "" && prazoFormatado != "" && prazoFormatado >= dataAtualFormatada){
+        const novaAtividade = {nome: nomeAtividade.toString(), prazo: prazoFormatado.toString(), concluida: false};
         atividadesNew.push(novaAtividade);
         localStorage.setItem('atividades' , JSON.stringify(atividadesNew));
 
         location.reload() 
         alert("Atividade registrada!");
     }else{
-        alert("Preencha todos os campos!")
+        alert("Preencha todos os campos corretamente!")
     }
 }
 
