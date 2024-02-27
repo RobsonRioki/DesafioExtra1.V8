@@ -37,20 +37,26 @@ function registrar(){
 
 function carregarMural() {
     const atividades = JSON.parse(localStorage.getItem('atividades')) || [];
+    const datasUnicas = new Set(); // Conjunto para armazenar datas únicas
 
     if (atividades.length === 0) {
         console.log('Nada adicionado');
     } else {
         for (let i = 0; i < atividades.length; i++) {
             const atividade = atividades[i];
-            const statusConcluida = atividade.concluida ? "concluida" : "";
+            const atividadePrazo = atividade.prazo;
 
-            muralAtividades.innerHTML += `<div class="atividadeNoMural ${statusConcluida}">
-                ${atividade.nome} ${atividade.prazo}
-                <button id="botaoRemover${i}" onclick="remover(${i})" class="botaoRemover">Remover</button>
-                <button onclick="concluir(${i})" class="botaoAlterar" id="botaoAlterar${i}">Concluir</button>
-                <br>
-            </div>`;
+            // Adiciona a data ao conjunto se ainda não estiver presente
+            if (!datasUnicas.has(atividadePrazo)) {
+                datasUnicas.add(atividadePrazo);
+
+                // Adiciona a opção ao <select>
+                var selectAtividades = document.getElementById('selectAtv');
+                var opcoesAtv = document.createElement('option');
+                opcoesAtv.innerHTML = `${atividadePrazo}`;
+                selectAtividades.appendChild(opcoesAtv);
+            }
+
         }
     }
 }
@@ -68,3 +74,26 @@ function concluir(index) {
     localStorage.setItem('atividades', JSON.stringify(atividades));
     location.reload();
 }
+
+function procurar(){
+    var selectAtividades = document.getElementById('selectAtv');
+    var opcaoAtv1 = selectAtividades.value;
+    muralAtividades.innerHTML = '';
+    const atividades = JSON.parse(localStorage.getItem('atividades')) || [];
+             for (let i = 0; i < atividades.length; i++){
+                const atividade = atividades[i];
+                const statusConcluida = atividade.concluida ? "concluida" : "";
+                if (atividade.prazo == opcaoAtv1){
+            muralAtividades.innerHTML += `<div class="atividadeNoMural ${statusConcluida}">
+                ${atividade.nome} ${atividade.prazo}
+                <button id="botaoRemover${i}" onclick="remover(${i})" class="botaoRemover">Remover</button>
+                <button onclick="concluir(${i})" class="botaoAlterar" id="botaoAlterar${i}">Concluir</button>
+                <br>
+            </div>`;
+                }
+
+}
+}
+
+
+carregarMural();
