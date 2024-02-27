@@ -164,6 +164,16 @@ footer {
     color: green;
 }
 
+.selectAtv {
+    width: 300px;
+    height: auto;
+    margin: auto;
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
 @media screen and (max-width: 1200px) {
     .ulHeader {
         display: none;
@@ -193,4 +203,7 @@ footer {
         font-size: 15px;
     }
 
+    .selectAtv {
+        margin-top: 30px;
+    }
 }
