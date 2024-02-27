@@ -7,20 +7,32 @@ function registrar(){
     var dataAtual = new Date();
     const dataAtualFormatada = dataAtual.toLocaleDateString('pt-BR');
 
-    let atividadesNew = JSON.parse(localStorage.getItem('atividades'));
-    if (!atividadesNew){
-    atividadesNew =[];
-    } 
+    let atividadesNew = JSON.parse(localStorage.getItem('atividades')) || [];
 
-    if (nomeAtividade != "" && prazoFormatado != "" && prazoFormatado >= dataAtualFormatada){
-        const novaAtividade = {nome: nomeAtividade.toString(), prazo: prazoFormatado.toString(), concluida: false};
-        atividadesNew.push(novaAtividade);
-        localStorage.setItem('atividades' , JSON.stringify(atividadesNew));
+    if (nomeAtividade !== "" && prazoFormatado !== "" && prazoFormatado >= dataAtualFormatada) {
+        const novaAtividade = { nome: nomeAtividade.toString(), prazo: prazoFormatado.toString(), concluida: false };
 
-        location.reload() 
-        alert("Atividade registrada!");
-    }else{
-        alert("Preencha todos os campos corretamente!")
+        let atividadesExistentes = JSON.parse(localStorage.getItem('atividades')) || [];
+        let atividadeExistente = false;
+
+        for (let ind = 0; ind < atividadesExistentes.length; ind++) {
+            if ((novaAtividade.nome === atividadesExistentes[ind].nome) && (novaAtividade.prazo === atividadesExistentes[ind].prazo)) {
+                atividadeExistente = true;
+                break;
+            }
+        }
+
+        if (atividadeExistente) {
+            alert("Atividade já registrada!");
+        } else {
+            atividadesNew.push(novaAtividade);
+            localStorage.setItem('atividades', JSON.stringify(atividadesNew));
+
+            location.reload();
+            alert("Atividade registrada!");
+        }
+    } else {
+        alert("Preencha todos os campos corretamente!");
     }
 }
 
