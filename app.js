@@ -1,16 +1,15 @@
 function registrar(){
     var nomeAtividade = inputAtividade.value.trim();
     var prazoAtividade = inputPrazo.value;
-    var data = new Date(prazoAtividade + "T00:00:00");
-    var prazoFormatado = data.toLocaleDateString('pt-BR');
 
-    var dataAtual = new Date();
-    const dataAtualFormatada = dataAtual.toLocaleDateString('pt-BR');
+    const [ano, mes, dia] = prazoAtividade.split('-');
+    const prazoAtv = `${dia}/${mes}/${ano}`;
+    const hoje = new Date().setHours(0, 0, 0, 0);
 
     let atividadesNew = JSON.parse(localStorage.getItem('atividades')) || [];
 
-    if (nomeAtividade !== "" && prazoFormatado !== "" && prazoFormatado >= dataAtualFormatada) {
-        const novaAtividade = { nome: nomeAtividade.toString(), prazo: prazoFormatado.toString(), concluida: false };
+    if (nomeAtividade !== "" && prazoAtv !== "" && new Date(ano, mes -1, dia) >= hoje) {
+        const novaAtividade = { nome: nomeAtividade.toString(), prazo: prazoAtv.toString(), concluida: false };
 
         let atividadesExistentes = JSON.parse(localStorage.getItem('atividades')) || [];
         let atividadeExistente = false;
@@ -28,8 +27,8 @@ function registrar(){
             atividadesNew.push(novaAtividade);
             localStorage.setItem('atividades', JSON.stringify(atividadesNew));
 
-            location.reload();
             alert("Atividade registrada!");
+            location.reload();
         }
     } else {
         alert("Preencha todos os campos corretamente!");
