@@ -37,7 +37,7 @@ function registrar(){
 
 function carregarMural() {
     const atividades = JSON.parse(localStorage.getItem('atividades')) || [];
-    const datasUnicas = new Set(); // Conjunto para armazenar datas únicas
+    const datasUnicas = new Set(); 
 
     if (atividades.length === 0) {
         console.log('Nada adicionado');
@@ -46,11 +46,11 @@ function carregarMural() {
             const atividade = atividades[i];
             const atividadePrazo = atividade.prazo;
 
-            // Adiciona a data ao conjunto se ainda não estiver presente
+            
             if (!datasUnicas.has(atividadePrazo)) {
                 datasUnicas.add(atividadePrazo);
 
-                // Adiciona a opção ao <select>
+             
                 var selectAtividades = document.getElementById('selectAtv');
                 var opcoesAtv = document.createElement('option');
                 opcoesAtv.innerHTML = `${atividadePrazo}`;
